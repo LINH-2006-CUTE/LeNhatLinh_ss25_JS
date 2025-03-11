@@ -14,19 +14,23 @@ function isStrongPassword(password) {
     let hasNumber = false;
     //Duyệt qua từng ký tự trong chuỗi
     for (let char of password) {
-        if (/[A-Z]/.test(char)) {
-            hasUpperCase = true; //Có chữ hoa
-        } else if (/[a-z]/.test(char)) {
-            hasLowerCase = true; //Có chữ thường
-        } else if (/[0-9]/.test(char)) {
-            hasNumber = true; //Có số
-        }
+        if (char >= 'A' && char <= 'Z') hasUpperCase = true;
+        else if (char >= 'a' && char <= 'z') hasLowerCase = true;
+        else if (char >= '0' && char <= '9') hasNumber = true;
 
+        if (hasUpperCase && hasLowerCase && hasNumber){
+            return true;
+        } 
     }
-    if (hasUpperCase && hasLowerCase && hasNumber) {
-        return true;
-     }
+    
+    return false;
 }
+
+    
+    // if (hasUpperCase && hasLowerCase && hasNumber) {
+    //     return true;
+    //  }
+
 
 //Kiểm tra 
 console.log(isStrongPassword("Abc123!@")); 
